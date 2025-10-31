@@ -62,7 +62,7 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
   const currentProduct = products[currentIndex];
 
   return (
-    <div className="relative h-[600px] bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+    <div className="relative h-[650px] bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentIndex}
@@ -89,8 +89,8 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
           }}
           className="absolute inset-0"
         >
-          <div className="container mx-auto px-4 h-full flex items-center">
-            <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+          <div className="container mx-auto px-6 max-w-7xl h-full flex items-center">
+            <div className="grid md:grid-cols-2 gap-16 items-center w-full">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -98,14 +98,14 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
                 className="space-y-6"
               >
                 <div className="inline-block">
-                  <span className="bg-black text-white text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="bg-gray-900 text-white text-xs font-light px-4 py-2 rounded-full tracking-wide">
                     TOP SELLING
                   </span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+                <h1 className="text-4xl md:text-5xl font-medium leading-tight text-gray-900 tracking-tight">
                   {currentProduct.name}
                 </h1>
-                <p className="text-lg text-gray-600 max-w-md">
+                <p className="text-base font-light text-gray-500 max-w-md leading-relaxed">
                   {currentProduct.description}
                 </p>
                 <div className="flex items-center space-x-4">
@@ -113,26 +113,26 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`w-5 h-5 ${
+                        className={`w-4 h-4 ${
                           i < Math.floor(currentProduct.rating)
                             ? 'fill-yellow-400 text-yellow-400'
-                            : 'text-gray-300'
+                            : 'text-gray-200'
                         }`}
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm font-light text-gray-500">
                     {currentProduct.rating} ({currentProduct.review_count} reviews)
                   </span>
                 </div>
                 <div className="flex items-baseline space-x-4">
-                  <span className="text-4xl font-bold">${currentProduct.price}</span>
+                  <span className="text-3xl font-medium text-gray-900">${currentProduct.price}</span>
                 </div>
                 <Link href={`/products/${currentProduct.id}`}>
                   <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="bg-gray-900 text-white px-10 py-4 rounded-lg font-light text-base hover:bg-gray-800 transition-colors"
                   >
                     Shop Now
                   </motion.button>
@@ -140,14 +140,14 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
-                className="relative h-[500px]"
+                className="relative h-[540px]"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl transform rotate-6"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl transform rotate-3"></div>
-                <div className="relative h-full rounded-3xl overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl transform rotate-3"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl transform rotate-1"></div>
+                <div className="relative h-full rounded-2xl overflow-hidden shadow-xl">
                   <img
                     src={currentProduct.images[0]}
                     alt={currentProduct.name}
@@ -162,19 +162,19 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
 
       <button
         onClick={() => paginate(-1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-3 rounded-full hover:bg-white transition-colors z-10"
+        className="absolute left-6 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm p-3 rounded-lg hover:bg-white transition-colors z-10 text-gray-700"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5" />
       </button>
 
       <button
         onClick={() => paginate(1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-3 rounded-full hover:bg-white transition-colors z-10"
+        className="absolute right-6 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm p-3 rounded-lg hover:bg-white transition-colors z-10 text-gray-700"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 h-5" />
       </button>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex space-x-2.5 z-10">
         {products.map((_, index) => (
           <button
             key={index}
@@ -182,8 +182,8 @@ export function HeroCarousel({ products }: HeroCarouselProps) {
               setDirection(index > currentIndex ? 1 : -1);
               setCurrentIndex(index);
             }}
-            className={`h-2 rounded-full transition-all ${
-              index === currentIndex ? 'w-8 bg-black' : 'w-2 bg-gray-300'
+            className={`h-1.5 rounded-full transition-all ${
+              index === currentIndex ? 'w-8 bg-gray-900' : 'w-1.5 bg-gray-300'
             }`}
           />
         ))}

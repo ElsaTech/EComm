@@ -35,11 +35,11 @@ export function ProductCard({ product, index }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
+      whileHover={{ y: -4 }}
       className="group relative"
     >
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100">
+        <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-50">
           <img
             src={product.images[0]}
             alt={product.name}
@@ -47,35 +47,35 @@ export function ProductCard({ product, index }: ProductCardProps) {
           />
 
           {product.stock_quantity < 10 && product.stock_quantity > 0 && (
-            <div className="absolute top-4 left-4 bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
+            <div className="absolute top-3 left-3 bg-orange-500 text-white text-xs font-light px-3 py-1.5 rounded-full">
               Only {product.stock_quantity} left
             </div>
           )}
 
           {product.is_top_selling && (
-            <div className="absolute top-4 left-4 bg-black text-white text-xs font-semibold px-3 py-1 rounded-full">
+            <div className="absolute top-3 left-3 bg-gray-900 text-white text-xs font-light px-3 py-1.5 rounded-full">
               Bestseller
             </div>
           )}
 
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleWishlistClick}
-            className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm p-2.5 rounded-lg shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
           >
             <Heart
-              className={`w-5 h-5 ${
-                inWishlist ? 'fill-red-500 text-red-500' : 'text-gray-700'
+              className={`w-4.5 h-4.5 ${
+                inWishlist ? 'fill-gray-900 text-gray-900' : 'text-gray-600'
               }`}
             />
           </motion.button>
 
-          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full bg-white text-black py-3 rounded-full font-semibold flex items-center justify-center space-x-2 hover:bg-gray-100 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full bg-white text-gray-900 py-2.5 rounded-lg font-light text-sm flex items-center justify-center space-x-2 hover:bg-gray-50 transition-colors"
             >
               <ShoppingCart className="w-4 h-4" />
               <span>Quick Add</span>
@@ -83,27 +83,27 @@ export function ProductCard({ product, index }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="mt-4 space-y-2">
+        <div className="mt-5 space-y-2.5">
           <div className="flex items-center justify-between">
-            <h3 className="font-semibold text-lg line-clamp-1">{product.name}</h3>
-            <span className="font-bold text-lg">${product.price}</span>
+            <h3 className="font-medium text-base text-gray-900 line-clamp-1">{product.name}</h3>
+            <span className="font-medium text-base text-gray-900">${product.price}</span>
           </div>
 
-          <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
+          <p className="text-sm font-light text-gray-500 line-clamp-2">{product.description}</p>
 
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-1">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-4 h-4 ${
+                  className={`w-3.5 h-3.5 ${
                     i < Math.floor(product.rating)
                       ? 'fill-yellow-400 text-yellow-400'
-                      : 'text-gray-300'
+                      : 'text-gray-200'
                   }`}
                 />
               ))}
-              <span className="text-sm text-gray-600 ml-2">
+              <span className="text-xs font-light text-gray-500 ml-2">
                 {product.rating} ({product.review_count})
               </span>
             </div>
@@ -113,7 +113,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
             {product.colors.slice(0, 4).map((color, i) => (
               <div
                 key={i}
-                className="w-6 h-6 rounded-full border-2 border-gray-300"
+                className="w-5 h-5 rounded-full border border-gray-200"
                 style={{
                   backgroundColor: color.toLowerCase().includes('white')
                     ? '#ffffff'

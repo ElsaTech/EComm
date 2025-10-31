@@ -18,61 +18,61 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center space-x-2">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="flex items-center justify-between h-20">
+          <Link href="/" className="flex items-center">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="text-xl font-medium tracking-tight text-gray-900"
             >
               UNISON
             </motion.div>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/products" className="text-sm font-medium hover:text-gray-600 transition-colors">
+          <nav className="hidden md:flex items-center space-x-10">
+            <Link href="/products" className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors">
               Shop All
             </Link>
-            <Link href="/products?category=T-Shirts" className="text-sm font-medium hover:text-gray-600 transition-colors">
+            <Link href="/products?category=T-Shirts" className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors">
               T-Shirts
             </Link>
-            <Link href="/products?category=Jeans" className="text-sm font-medium hover:text-gray-600 transition-colors">
+            <Link href="/products?category=Jeans" className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors">
               Jeans
             </Link>
-            <Link href="/products?category=Hoodies" className="text-sm font-medium hover:text-gray-600 transition-colors">
+            <Link href="/products?category=Hoodies" className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors">
               Hoodies
             </Link>
-            <Link href="/products?category=Jackets" className="text-sm font-medium hover:text-gray-600 transition-colors">
+            <Link href="/products?category=Jackets" className="text-sm font-light text-gray-600 hover:text-gray-900 transition-colors">
               Jackets
             </Link>
           </nav>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setSearchOpen(!searchOpen)}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="p-2.5 hover:bg-gray-50 rounded-lg transition-colors"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-4.5 h-4.5 text-gray-600" />
             </motion.button>
 
             {user ? (
               <>
                 <Link href="/wishlist">
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-2 hover:bg-gray-100 rounded-full transition-colors relative"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2.5 hover:bg-gray-50 rounded-lg transition-colors relative"
                   >
-                    <Heart className="w-5 h-5" />
+                    <Heart className="w-4.5 h-4.5 text-gray-600" />
                     {wishlistCount > 0 && (
                       <motion.span
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                        className="absolute -top-1 -right-1 bg-gray-900 text-white text-xs font-light rounded-full w-4.5 h-4.5 flex items-center justify-center"
                       >
                         {wishlistCount}
                       </motion.span>
@@ -82,16 +82,16 @@ export function Header() {
 
                 <Link href="/cart">
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-2 hover:bg-gray-100 rounded-full transition-colors relative"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2.5 hover:bg-gray-50 rounded-lg transition-colors relative"
                   >
-                    <ShoppingCart className="w-5 h-5" />
+                    <ShoppingCart className="w-4.5 h-4.5 text-gray-600" />
                     {cartCount > 0 && (
                       <motion.span
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"
+                        className="absolute -top-1 -right-1 bg-gray-900 text-white text-xs font-light rounded-full w-4.5 h-4.5 flex items-center justify-center"
                       >
                         {cartCount}
                       </motion.span>
@@ -101,17 +101,17 @@ export function Header() {
 
                 <Link href="/orders">
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="hidden md:block p-2 hover:bg-gray-100 rounded-full transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="hidden md:block p-2.5 hover:bg-gray-50 rounded-lg transition-colors"
                   >
-                    <User className="w-5 h-5" />
+                    <User className="w-4.5 h-4.5 text-gray-600" />
                   </motion.button>
                 </Link>
               </>
             ) : (
               <Link href="/auth/login">
-                <Button size="sm" className="hidden md:inline-flex">
+                <Button size="sm" className="hidden md:inline-flex font-light">
                   Sign In
                 </Button>
               </Link>
@@ -119,9 +119,9 @@ export function Header() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="md:hidden p-2.5 hover:bg-gray-50 rounded-lg transition-colors"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4.5 h-4.5 text-gray-600" /> : <Menu className="w-4.5 h-4.5 text-gray-600" />}
             </button>
           </div>
         </div>
@@ -137,7 +137,7 @@ export function Header() {
               <Input
                 type="search"
                 placeholder="Search for products..."
-                className="w-full"
+                className="w-full font-light border-gray-200 focus:border-gray-300"
                 autoFocus
               />
             </motion.div>
@@ -153,39 +153,39 @@ export function Header() {
             exit={{ opacity: 0, x: '100%' }}
             className="fixed inset-0 top-16 bg-white z-40 md:hidden"
           >
-            <nav className="flex flex-col p-6 space-y-4">
+            <nav className="flex flex-col p-8 space-y-6">
               <Link
                 href="/products"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium hover:text-gray-600 transition-colors"
+                className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors"
               >
                 Shop All
               </Link>
               <Link
                 href="/products?category=T-Shirts"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium hover:text-gray-600 transition-colors"
+                className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors"
               >
                 T-Shirts
               </Link>
               <Link
                 href="/products?category=Jeans"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium hover:text-gray-600 transition-colors"
+                className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors"
               >
                 Jeans
               </Link>
               <Link
                 href="/products?category=Hoodies"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium hover:text-gray-600 transition-colors"
+                className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors"
               >
                 Hoodies
               </Link>
               <Link
                 href="/products?category=Jackets"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium hover:text-gray-600 transition-colors"
+                className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors"
               >
                 Jackets
               </Link>
@@ -194,7 +194,7 @@ export function Header() {
                   <Link
                     href="/orders"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg font-medium hover:text-gray-600 transition-colors"
+                    className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors"
                   >
                     My Orders
                   </Link>
@@ -203,7 +203,7 @@ export function Header() {
                       signOut();
                       setMobileMenuOpen(false);
                     }}
-                    className="text-lg font-medium hover:text-gray-600 transition-colors text-left"
+                    className="text-base font-light text-gray-700 hover:text-gray-900 transition-colors text-left"
                   >
                     Sign Out
                   </button>
@@ -214,7 +214,7 @@ export function Header() {
                   href="/auth/login"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Button className="w-full">Sign In</Button>
+                  <Button className="w-full font-light">Sign In</Button>
                 </Link>
               )}
             </nav>

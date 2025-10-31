@@ -1,22 +1,43 @@
 @import "tailwindcss";
 
-/* 1️⃣ Optional: enable class-based dark mode (keep if you want manual toggle) */
 @custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
-  /* etc */
 }
+
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 15%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+  }
+
+  body {
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    font-weight: 300;
+    letter-spacing: -0.011em;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  p {
+    font-weight: 300;
+    color: hsl(0 0% 35%);
+    line-height: 1.7;
   }
 }
